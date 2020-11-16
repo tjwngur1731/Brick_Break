@@ -8,7 +8,7 @@ public class BrickManager : MonoBehaviour
 
     int x, y, i;
     int curScore, highScore;
-    int checkCntX, checkCntY;
+    bool chk;
 
     GameObject[,] Square;
     // Start is called before the first frame update
@@ -70,49 +70,61 @@ public class BrickManager : MonoBehaviour
 
     void BrickCheck()
     {
-        checkCntX = 0;
-        checkCntY = 0;
-        int x1, y1;
-        for (x1 = 0; x1 < 7; x1++)
+        for (int xx = 0; xx < 7; xx++)
         {
-            for (y1 = 0; y1 < 6; y1++)
+            for (int yy = 0; yy < 6; yy++)
             {
-                if (Square[x1, y1] != null && Square[x1, y1 + 1] != null)
+                if (Square[xx, yy] == null || Square[xx, yy + 1] == null)
                 {
-                    if (Square[x1, y1].CompareTag(Square[x1, y1 + 1].tag))
-                    {
-                        checkCntY++;
-                    }
+                    chk = false;
+                    break;
                 }
-                if (checkCntY == 6)
-                    BrickBreak(x1, true);
+
+                else if (Square[xx,yy].tag==Square[xx,yy+1].tag)
+                {
+                    chk = true;
+                }
+                else
+                {
+                    chk = false;
+                    break;
+                }
             }
-            checkCntY = 0;
+            if(chk) BrickBreak(xx,false);
         }
-        for (y1 = 0; y1 < 7; y1++)
+        
+        for(int yy=0;yy<7;yy++)
         {
-            for (x1 = 0; x1 < 6; x1++)
+            for(int xx = 0; xx<6;xx++)
             {
-                if (Square[x1, y1] != null && Square[x1 + 1, y1] != null)
+                if (Square[xx, yy] == null || Square[xx + 1, yy] == null)
                 {
-                    if (Square[x1, y1].CompareTag(Square[x1 + 1, y1].tag))
-                    {
-                        checkCntX++;
-                    }
+                    chk = false;
+                    break;
                 }
-                if(checkCntX==6)
-                    BrickBreak(y1, true);
+
+                else if (Square[xx, yy].tag == Square[xx + 1, yy].tag)
+                {
+                    chk = true;
+                }
+
+                else
+                {
+                    chk = false;
+                    break;
+                }
             }
-            checkCntX = 0;
+            if (chk) BrickBreak(yy, true);
         }
+        
     }
 
-    void BrickBreak(int line,bool isHorizontal)
+    void BrickBreak(int line, bool isHorizontal)
     {
-        
+
         if (isHorizontal)
         {
-            for(int ii=0;ii<7;ii++)
+            for (int ii = 0; ii < 7; ii++)
             {
                 Destroy(Square[ii, line]);
             }
@@ -136,6 +148,7 @@ public class BrickManager : MonoBehaviour
             Square[x1, y1] = null;
         }
 
+        BrickCheck();
     }
 
 
