@@ -5,8 +5,6 @@ using UnityEngine;
 public class BrickManager : MonoBehaviour
 {
     public GameObject[] brickPrefab;
-    public GameObject[] posX;
-    public GameObject[] posY;
 
     public int[,] map;
 
@@ -14,12 +12,18 @@ public class BrickManager : MonoBehaviour
 
     void Awake()
     {
-        if (!instance) instance = null;    
+        if (!instance) instance = this;
     }
 
     void Start()
     {
         map = new int[7, 7];
+        for(int i=0;i<7;i++)
+        {
+            for(int j=0;j<7;j++)
+            {
+            }
+        }
         BrickSpawn();
     }
     void Update()
@@ -35,11 +39,11 @@ public class BrickManager : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            spawnPos[i] = Random.Range(0, 8);
+            spawnPos[i] = Random.Range(0, 7);
         }
         if (map[spawnPos[0], spawnPos[1]] == 0)
         {
-            Instantiate(brickPrefab[Random.Range(0, 2)], new Vector3(posX[spawnPos[0]].transform.position.x, posY[spawnPos[1]].transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+            Instantiate(brickPrefab[brick-1], Vector3.zero, Quaternion.Euler(0, 0, 0));
             map[spawnPos[0], spawnPos[1]] = brick;
         }
     }
