@@ -7,6 +7,7 @@ public class MoneyText : MonoBehaviour
 {
     private Text myMoney;
     int userMoney;
+
     void Start()
     {
         
@@ -23,7 +24,7 @@ public class MoneyText : MonoBehaviour
     void SetMoney()
     {
         myMoney.text = userMoney.ToString();
-        PlayerPrefs.SetInt("Money", ShopManager.userMoney);
+        PlayerPrefs.SetInt("Money", ShopManager.instance.userMoney);
 
     }
 }
