@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     int[] skinPrice;
-    public static int userMoney = 1000;
+    public static int userMoney;
     List<string> userInven = new List<string>();
     public bool[] buySkin;
 
@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
         skinPrice[3] = 100;
         skinPrice[4] = 100;
         skinPrice[5] = 100;
+        userMoney = PlayerPrefs.GetInt("Money");
     }
 
     public void BuySkin(int index)
@@ -41,6 +42,7 @@ public class ShopManager : MonoBehaviour
         }
         buySkin[index] = true;
         userMoney -= skinPrice[index];
+        PlayerPrefs.SetInt("Money", userMoney);
 
         Debug.Log("구매 : " + buySkin[index]);
     }

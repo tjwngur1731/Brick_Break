@@ -6,18 +6,24 @@ using UnityEngine.UI;
 public class MoneyText : MonoBehaviour
 {
     private Text myMoney;
+    int userMoney;
     void Start()
     {
+        
         myMoney = GameObject.Find("Money").GetComponent<Text>();
+        userMoney = PlayerPrefs.GetInt("Money");
     }
 
     void Update()
     {
         SetMoney();
+        userMoney = PlayerPrefs.GetInt("Money");
     }
 
     void SetMoney()
     {
-        myMoney.text = ShopManager.userMoney.ToString();
+        myMoney.text = userMoney.ToString();
+        PlayerPrefs.SetInt("Money", ShopManager.userMoney);
+
     }
 }
