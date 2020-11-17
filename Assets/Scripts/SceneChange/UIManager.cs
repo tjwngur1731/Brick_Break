@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject[] SFXUI;
 
     public GameObject[] SoundUI;
+
+    public Text highScore;
 
     bool isSetting;
     bool isSFX;
@@ -72,4 +75,8 @@ public class UIManager : MonoBehaviour
         else Time.timeScale = 1;
     }
 
+    void Update()
+    {
+        highScore.text = PlayerPrefs.GetInt("highScore").ToString();
+    }
 }

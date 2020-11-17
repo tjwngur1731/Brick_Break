@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BrickManager : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class BrickManager : MonoBehaviour
     public Text bestScore;
     public Text score;
 
+    AudioSource audio;
+
     int x, y, i;
     int curScore, highScore;
     bool chk;
     int ra;
+
     int cnttt;
 
     GameObject[,] Square;
@@ -22,6 +26,7 @@ public class BrickManager : MonoBehaviour
     {
         Square = new GameObject[7, 7];
         highScore = PlayerPrefs.GetInt("highScore");
+        audio = GetComponent<AudioSource>();
         Spawn();
         Spawn();
         Spawn();
@@ -39,7 +44,7 @@ public class BrickManager : MonoBehaviour
             // 일시정지
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause)
         {
             for (x = 0; x <= 6; x++)
                 for (y = 0; y <= 5; y++)
@@ -48,7 +53,7 @@ public class BrickManager : MonoBehaviour
             Spawn();
             BrickCheck();
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause)
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause)
         {
             for (x = 0; x <= 6; x++)
                 for (y = 6; y >= 1; y--)
@@ -147,6 +152,7 @@ public class BrickManager : MonoBehaviour
             }
         }
         Debug.Log("BREAK!");
+        audio.Play();
         curScore++;
     }
 
@@ -166,11 +172,28 @@ public class BrickManager : MonoBehaviour
     {
         while (true)
         {
+            cnttt = 0;
+
             x = Random.Range(0, 7);
             y = Random.Range(0, 7);
 
             if (Square[x, y] == null)
                 break;
+
+            for (int ii = 0; ii < 7; ii++)
+            {
+                for (int jj = 0; jj < 7; jj++)
+                {
+                    if(Square[ii,jj] != null)
+                    {
+                        cnttt++;
+                    }
+                }
+            }
+            if (cnttt >= 48)
+            {
+
+            }
         }
 
         ra = Random.Range(0, 10);
@@ -179,7 +202,7 @@ public class BrickManager : MonoBehaviour
 
         if (Square[x, y] == null)
         {
-            Square[x, y] = Instantiate(n[ra], new Vector3(0.81f * x - 2.43f, 0.81f * y - 2.43f -0.7f, 0), Quaternion.identity);
+            Square[x, y] = Instantiate(n[ra], new Vector3(0.75f * x -2.25f, -0.75f * y + 1.5f, 0), Quaternion.identity);
         }
     }
 
