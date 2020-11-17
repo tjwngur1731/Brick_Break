@@ -39,7 +39,7 @@ public class BrickManager : MonoBehaviour
             // 일시정지
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause)
         {
             for (x = 0; x <= 6; x++)
                 for (y = 0; y <= 5; y++)
@@ -48,7 +48,7 @@ public class BrickManager : MonoBehaviour
             Spawn();
             BrickCheck();
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause)
         {
             for (x = 0; x <= 6; x++)
                 for (y = 6; y >= 1; y--)
@@ -57,7 +57,7 @@ public class BrickManager : MonoBehaviour
             Spawn();
             BrickCheck();
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && !UIManager.instance.isPause)
         {
             for (y = 0; y <= 6; y++)
                 for (x = 0; x <= 5; x++)
@@ -66,7 +66,7 @@ public class BrickManager : MonoBehaviour
             Spawn();
             BrickCheck();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && !UIManager.instance.isPause)
         {
             for (y = 0; y <= 6; y++)
                 for (x = 6; x >= 1; x--)

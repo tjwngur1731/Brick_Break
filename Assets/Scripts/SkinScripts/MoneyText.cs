@@ -23,8 +23,8 @@ public class MoneyText : MonoBehaviour
 
     void SetMoney()
     {
-        myMoney.text = userMoney.ToString();
-        PlayerPrefs.SetInt("Money", ShopManager.instance.userMoney);
+        //myMoney.text = userMoney.ToString();
+        //PlayerPrefs.SetInt("Money", ShopManager.instance.userMoney);
 
     }
 }
