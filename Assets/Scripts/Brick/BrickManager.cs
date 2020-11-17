@@ -1,79 +1,3 @@
-<<<<<<< HEAD
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class BrickManager : MonoBehaviour
-{
-    public GameObject[] n;
-
-    public Text bestScore;
-    public Text score;
-
-    int x, y, i;
-    int curScore, highScore;
-    bool chk;
-    int ra;
-    int cnttt;
-
-    GameObject[,] Square;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Square = new GameObject[7, 7];
-        highScore = PlayerPrefs.GetInt("highScore");
-        Spawn();
-        Spawn();
-        Spawn();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        score.text = curScore.ToString();
-        bestScore.text = highScore.ToString();
-        PlayerPrefs.SetInt("highScore", highScore);
-        if (curScore > highScore) highScore = curScore;
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // 일시정지
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            for (x = 0; x <= 6; x++)
-                for (y = 0; y <= 5; y++)
-                    for (i = 6; i >= y + 1; i--)
-                        BrickMove(x, i - 1, x, i);
-            Spawn();
-            BrickCheck();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            for (x = 0; x <= 6; x++)
-                for (y = 6; y >= 1; y--)
-                    for (i = 0; i <= y - 1; i++)
-                        BrickMove(x, i + 1, x, i);
-            Spawn();
-            BrickCheck();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            for (y = 0; y <= 6; y++)
-                for (x = 0; x <= 5; x++)
-                    for (i = 6; i >= x + 1; i--)
-                        BrickMove(i - 1, y, i, y);
-            Spawn();
-            BrickCheck();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            for (y = 0; y <= 6; y++)
-                for (x = 6; x >= 1; x--)
-                    for (i = 0; i <= x - 1; i++)
-                        BrickMove(i + 1, y, i, y);
-=======
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -148,7 +72,6 @@ public class BrickManager : MonoBehaviour
                 for (x = 6; x >= 1; x--)
                     for (i = 0; i <= x - 1; i++)
                         BrickMove(i + 1, y, i, y);
->>>>>>> 1f223e338caffad7b1a65f998f6308d6400e52b6
             Spawn();
             BrickCheck();    
         }
