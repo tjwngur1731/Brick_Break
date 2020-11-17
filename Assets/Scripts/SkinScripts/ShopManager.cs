@@ -19,8 +19,8 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
-        skinPrice = new int[6];
-        buySkin = new bool[6];
+        skinPrice = new int[7];
+        buySkin = new bool[7];
         for (int i = 0; i < buySkin.Length; i++)
         {
             buySkin[i] = false;
@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
         skinPrice[3] = 100;
         skinPrice[4] = 100;
         skinPrice[5] = 100;
+        skinPrice[6] = 100;
         userMoney = PlayerPrefs.GetInt("Money");
     }
 
