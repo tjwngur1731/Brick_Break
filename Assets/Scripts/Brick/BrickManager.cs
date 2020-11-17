@@ -12,10 +12,15 @@ public class BrickManager : MonoBehaviour
     public Text score;
 
     AudioSource audio;
+    AudioSource move;
+
+    public GameObject sound;
+
 
     int x, y, i;
     int curScore, highScore;
     bool chk;
+    bool isSFX;
     int ra;
 
     int cnttt;
@@ -27,6 +32,7 @@ public class BrickManager : MonoBehaviour
         Square = new GameObject[7, 7];
         highScore = PlayerPrefs.GetInt("highScore");
         audio = GetComponent<AudioSource>();
+        move = sound.GetComponent<AudioSource>();
         Spawn();
         Spawn();
         Spawn();
@@ -35,6 +41,8 @@ public class BrickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
+        else isSFX = false;
         score.text = curScore.ToString();
         bestScore.text = highScore.ToString();
         PlayerPrefs.SetInt("highScore", highScore);
@@ -51,6 +59,7 @@ public class BrickManager : MonoBehaviour
                     for (i = 6; i >= y + 1; i--)
                         BrickMove(x, i - 1, x, i);
             Spawn();
+            if(isSFX) move.Play();
             BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause)
@@ -60,6 +69,8 @@ public class BrickManager : MonoBehaviour
                     for (i = 0; i <= y - 1; i++)
                         BrickMove(x, i + 1, x, i);
             Spawn();
+            if(isSFX) move.Play();
+
             BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && !UIManager.instance.isPause)
@@ -69,6 +80,9 @@ public class BrickManager : MonoBehaviour
                     for (i = 6; i >= x + 1; i--)
                         BrickMove(i - 1, y, i, y);
             Spawn();
+            if (isSFX) move.Play();
+
+
             BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && !UIManager.instance.isPause)
@@ -78,6 +92,9 @@ public class BrickManager : MonoBehaviour
                     for (i = 0; i <= x - 1; i++)
                         BrickMove(i + 1, y, i, y);
             Spawn();
+            if (isSFX) move.Play();
+
+
             BrickCheck();    
         }
 
@@ -152,7 +169,7 @@ public class BrickManager : MonoBehaviour
             }
         }
         Debug.Log("BREAK!");
-        audio.Play();
+        if (isSFX) audio.Play();
         curScore++;
     }
 

@@ -46,16 +46,19 @@ public class UIManager : MonoBehaviour
 
     public void SFX()
     {
+        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
+        else isSFX = false;
         isSFX = !isSFX;
-        SFXUI[0].SetActive(isSFX);
-        SFXUI[1].SetActive(!isSFX);
+        SFXUI[1].SetActive(isSFX);
+        SFXUI[0].SetActive(!isSFX);
+        PlayerPrefs.SetInt("isSFX", isSFX ? 1:0);
     }
 
     public void Sound()
     {
         isSound = !isSound;
-        SoundUI[0].SetActive(isSound);
-        SoundUI[1].SetActive(!isSound);
+        SoundUI[1].SetActive(isSound);
+        SoundUI[0].SetActive(!isSound);
     }
 
 
