@@ -22,8 +22,7 @@ public class MoneyText : MonoBehaviour
 
     void SetMoney()
     {
-        myMoney.text = userMoney.ToString();
+        myMoney.text = "<color=#ff0000>" + userMoney.ToString() + "</color>";
         PlayerPrefs.SetInt("Money", ShopManager.userMoney);
-
     }
 }
