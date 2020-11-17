@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BrickManager : MonoBehaviour
 {
     public GameObject[] n;
 
+    public Text bestScore;
+    public Text score;
+
     int x, y, i;
     int curScore, highScore;
     bool chk;
+    int ra;
+    int cnttt;
 
     GameObject[,] Square;
     // Start is called before the first frame update
@@ -24,6 +30,10 @@ public class BrickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        score.text = curScore.ToString();
+        bestScore.text = highScore.ToString();
+        PlayerPrefs.SetInt("highScore", highScore);
+        if (curScore > highScore) highScore = curScore;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 일시정지
@@ -35,8 +45,8 @@ public class BrickManager : MonoBehaviour
                 for (y = 0; y <= 5; y++)
                     for (i = 6; i >= y + 1; i--)
                         BrickMove(x, i - 1, x, i);
-            BrickCheck();
             Spawn();
+            BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -44,8 +54,8 @@ public class BrickManager : MonoBehaviour
                 for (y = 6; y >= 1; y--)
                     for (i = 0; i <= y - 1; i++)
                         BrickMove(x, i + 1, x, i);
-            BrickCheck();
             Spawn();
+            BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -53,8 +63,8 @@ public class BrickManager : MonoBehaviour
                 for (x = 0; x <= 5; x++)
                     for (i = 6; i >= x + 1; i--)
                         BrickMove(i - 1, y, i, y);
-            BrickCheck();
             Spawn();
+            BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -62,8 +72,8 @@ public class BrickManager : MonoBehaviour
                 for (x = 6; x >= 1; x--)
                     for (i = 0; i <= x - 1; i++)
                         BrickMove(i + 1, y, i, y);
-            BrickCheck();
             Spawn();
+            BrickCheck();    
         }
 
     }
@@ -137,6 +147,7 @@ public class BrickManager : MonoBehaviour
             }
         }
         Debug.Log("BREAK!");
+        curScore++;
     }
 
     void BrickMove(int x1, int y1, int x2, int y2)
@@ -147,8 +158,7 @@ public class BrickManager : MonoBehaviour
             Square[x2, y2] = Square[x1, y1];
             Square[x1, y1] = null;
         }
-
-        BrickCheck();
+        
     }
 
 
@@ -163,9 +173,14 @@ public class BrickManager : MonoBehaviour
                 break;
         }
 
+        ra = Random.Range(0, 10);
+
+        if (ra > 0) ra = 1;
+
         if (Square[x, y] == null)
         {
-            Square[x, y] = Instantiate(n[Random.Range(0, 2)], new Vector3(0.8f * x - 2.4f, 0.8f * y - 2.4f, 0), Quaternion.identity);
+            Square[x, y] = Instantiate(n[ra], new Vector3(0.81f * x - 2.43f, 0.81f * y - 2.43f -0.7f, 0), Quaternion.identity);
         }
     }
+
 }
