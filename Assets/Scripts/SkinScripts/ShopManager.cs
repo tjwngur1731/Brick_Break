@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     int[] skinPrice;
-    public static int userMoney;
+    public int userMoney;
     List<string> userInven = new List<string>();
     public bool[] buySkin;
 
