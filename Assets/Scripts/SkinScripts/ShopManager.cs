@@ -8,6 +8,7 @@ public class ShopManager : MonoBehaviour
     public int userMoney;
     List<string> userInven = new List<string>();
     public bool[] buySkin;
+    bool[] boughtSkin;
 
     public static ShopManager instance = null;
 
@@ -21,6 +22,7 @@ public class ShopManager : MonoBehaviour
     {
         skinPrice = new int[7];
         buySkin = new bool[7];
+        boughtSkin = new bool[7];
         for (int i = 0; i < buySkin.Length; i++)
         {
             buySkin[i] = false;
@@ -41,8 +43,16 @@ public class ShopManager : MonoBehaviour
         {
             buySkin[i] = false;
         }
+        for (int i = 0; i < buySkin.Length; i++)
+        {
+            if (boughtSkin[i])
+            {
+                userMoney += skinPrice[index];
+            }
+        }
         buySkin[index] = true;
         userMoney -= skinPrice[index];
+        boughtSkin[index] = true;
         PlayerPrefs.SetInt("Money", userMoney);
 
         Debug.Log("구매 : " + buySkin[index]);

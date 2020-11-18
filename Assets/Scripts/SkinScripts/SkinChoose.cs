@@ -19,10 +19,23 @@ public class SkinChoose : MonoBehaviour
         }
     }
 
-    public void SkinAvailble()
+    public void SkinAvailble(int choose)
     {
+        for (int i = 0; i < obj.Length; i++)
+        {
+            obj[i].SetActive(false);
+        }
+        for (int i = 0; i < obj.Length; i++)
+        {
+            if (ShopManager.instance.buySkin[i])
+            {
+                obj[choose].SetActive(true);
+                PlayerPrefs.SetInt("Skin", choose);
+            }
 
+        }
 
+/*
 
         for (int i = 0; i < obj.Length; i++)
         {
@@ -41,6 +54,6 @@ public class SkinChoose : MonoBehaviour
                 Debug.Log(i);
             }
             
-        }
+        }*/
     }
 }
