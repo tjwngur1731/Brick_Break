@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour
     {
         isInfo = !isInfo;
 
-        InfoUI.SetActive(!isInfo);
+        InfoUI.SetActive(isInfo);
         SoundMgr.instance.TouchSoundPlay();
 
     }
