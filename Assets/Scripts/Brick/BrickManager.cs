@@ -10,17 +10,17 @@ public class BrickManager : MonoBehaviour
 
     public Text bestScore;
     public Text score;
+    public Text curScore2;
 
-    AudioSource audio;
-    AudioSource move;
 
-    public GameObject sound;
+    public GameObject gameover;
 
 
     int x, y, i;
     int curScore, highScore;
     bool chk;
     bool isSFX;
+    bool isGameover;
     int ra;
 
     int cnttt;
@@ -31,8 +31,10 @@ public class BrickManager : MonoBehaviour
     {
         Square = new GameObject[7, 7];
         highScore = PlayerPrefs.GetInt("highScore");
-        audio = GetComponent<AudioSource>();
-        move = sound.GetComponent<AudioSource>();
+
+
+        SoundMgr.instance.StartSoundPlay();
+
         Spawn();
         Spawn();
         Spawn();
@@ -45,6 +47,7 @@ public class BrickManager : MonoBehaviour
         else isSFX = false;
         score.text = curScore.ToString();
         bestScore.text = highScore.ToString();
+        curScore2.text = curScore.ToString();
         PlayerPrefs.SetInt("highScore", highScore);
         if (curScore > highScore) highScore = curScore;
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -59,7 +62,7 @@ public class BrickManager : MonoBehaviour
                     for (i = 6; i >= y + 1; i--)
                         BrickMove(x, i - 1, x, i);
             Spawn();
-            if(isSFX) move.Play();
+            if(isSFX) SoundMgr.instance.MoveSoundPlay();
             BrickCheck();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause)
@@ -69,7 +72,7 @@ public class BrickManager : MonoBehaviour
                     for (i = 0; i <= y - 1; i++)
                         BrickMove(x, i + 1, x, i);
             Spawn();
-            if(isSFX) move.Play();
+            if(isSFX) SoundMgr.instance.MoveSoundPlay();
 
             BrickCheck();
         }
@@ -80,7 +83,7 @@ public class BrickManager : MonoBehaviour
                     for (i = 6; i >= x + 1; i--)
                         BrickMove(i - 1, y, i, y);
             Spawn();
-            if (isSFX) move.Play();
+            if (isSFX) SoundMgr.instance.MoveSoundPlay();
 
 
             BrickCheck();
@@ -92,7 +95,7 @@ public class BrickManager : MonoBehaviour
                     for (i = 0; i <= x - 1; i++)
                         BrickMove(i + 1, y, i, y);
             Spawn();
-            if (isSFX) move.Play();
+            if (isSFX) SoundMgr.instance.MoveSoundPlay();
 
 
             BrickCheck();    
@@ -169,7 +172,7 @@ public class BrickManager : MonoBehaviour
             }
         }
         Debug.Log("BREAK!");
-        if (isSFX) audio.Play();
+        if (isSFX) SoundMgr.instance.BreakSoundPlay();
         curScore++;
     }
 
@@ -187,7 +190,7 @@ public class BrickManager : MonoBehaviour
 
     void Spawn()
     {
-        while (true)
+        while (true && !isGameover)
         {
             cnttt = 0;
 
@@ -209,7 +212,9 @@ public class BrickManager : MonoBehaviour
             }
             if (cnttt >= 48)
             {
-
+                gameover.SetActive(true);
+                isGameover = true;
+                SoundMgr.instance.OverSoundPlay();
             }
         }
 

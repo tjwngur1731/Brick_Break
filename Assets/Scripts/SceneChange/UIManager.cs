@@ -14,34 +14,50 @@ public class UIManager : MonoBehaviour
 
     public GameObject[] SoundUI;
 
+    public GameObject InfoUI;
+
     public Text highScore;
+    public Text curScore;
 
     bool isSetting;
-    bool isSFX;
+    public bool isSFX;
     bool isSound;
+    bool isInfo;
     public bool isPause;
 
     public static UIManager instance=null;
 
     void Awake()
     {
-        if (!instance) instance = this;
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
+        else isSFX = false;
     }
 
     public void Ingame()
     {
         SceneManager.LoadScene("IngameScene");
+        SoundMgr.instance.TouchSoundPlay();
     }
 
     public void Title()
     {
         SceneManager.LoadScene("TitleScene");
+        SoundMgr.instance.TouchSoundPlay();
+
     }
 
     public void Setting()
     {
         isSetting = !isSetting;
         settingUI.SetActive(isSetting);
+        SoundMgr.instance.TouchSoundPlay();
+
     }
 
     public void SFX()
@@ -66,6 +82,8 @@ public class UIManager : MonoBehaviour
     public void Skin()
     {
         SceneManager.LoadScene("Skins");
+        SoundMgr.instance.TouchSoundPlay();
+
     }
 
     public void Pause()
@@ -73,13 +91,26 @@ public class UIManager : MonoBehaviour
         isPause = !isPause;
 
         pauseUI.SetActive(isPause);
+        SoundMgr.instance.TouchSoundPlay();
+
 
         if (isPause) Time.timeScale = 0;
         else Time.timeScale = 1;
     }
 
+    public void Info()
+    {
+        isInfo = !isInfo;
+
+        InfoUI.SetActive(!isInfo);
+        SoundMgr.instance.TouchSoundPlay();
+
+    }
+
     void Update()
     {
         highScore.text = PlayerPrefs.GetInt("highScore").ToString();
+        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
+        else isSFX = false;
     }
 }
