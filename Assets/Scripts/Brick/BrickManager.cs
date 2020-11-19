@@ -36,7 +36,11 @@ public class BrickManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         dragDistance = Screen.height * 10 / 100;
+=======
+        dragDistance = Screen.height * 15 / 100;
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
 
         Square = new GameObject[7, 7];
         highScore = PlayerPrefs.GetInt("highScore");
@@ -52,10 +56,67 @@ public class BrickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
+=======
+        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        {
+            Touch touch = Input.GetTouch(0); // get the touch
+            if (touch.phase == TouchPhase.Began) //check for the first touch
+            {
+                fp = touch.position;
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
+            {
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
+            {
+                lp = touch.position;  //last touch position. Ommitted if you use list
+
+                //Check if drag distance is greater than 20% of the screen height
+                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
+                {//It's a drag
+                 //check if the drag is vertical or horizontal
+                    if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
+                    {   //If the horizontal movement is greater than the vertical movement...
+                        if ((lp.x > fp.x))  //If the movement was to the right)
+                        {   //Right swipe
+                            MoveRight();
+                        }
+                        else
+                        {   //Left swipe
+                            MoveLeft();
+                        }
+                    }
+                    else
+                    {   //the vertical movement is greater than the horizontal movement
+                        if (lp.y > fp.y)  //If the movement was up
+                        {   //Up swipe
+                            MoveUp();
+                        }
+                        else
+                        {   //Down swipe
+                            MoveDown();
+                        }
+                    }
+                }
+                else
+                {   //It's a tap as the drag distance is less than 20% of the screen height
+                    Debug.Log("Tap");
+                }
+            }
+        }
+
+        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
+        else isSFX = false;
+        score.text = curScore.ToString();
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
         bestScore.text = highScore.ToString();
         curScore2.text = curScore.ToString();
         PlayerPrefs.SetInt("highScore", highScore);
         if (curScore > highScore) highScore = curScore;
+<<<<<<< HEAD
         score.text = curScore.ToString();
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
         else isSFX = false;
@@ -114,6 +175,9 @@ public class BrickManager : MonoBehaviour
         
         
 #elif UNITY_EDITOR
+=======
+
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
         if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause && !isBreaking) 
         {
             for (x = 0; x <= 6; x++)
@@ -160,6 +224,54 @@ public class BrickManager : MonoBehaviour
             BrickCheck();
         }
 #endif
+    }
+
+    void MoveDown()
+    {
+        for (x = 0; x <= 6; x++)
+            for (y = 0; y <= 5; y++)
+                for (i = 6; i >= y + 1; i--)
+                    BrickMove(x, i - 1, x, i);
+        Spawn();
+        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+        BrickCheck();
+    }
+    void MoveUp()
+    {
+        for (x = 0; x <= 6; x++)
+            for (y = 6; y >= 1; y--)
+                for (i = 0; i <= y - 1; i++)
+                    BrickMove(x, i + 1, x, i);
+        Spawn();
+        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+
+        BrickCheck();
+    }
+
+    void MoveRight()
+    {
+        for (y = 0; y <= 6; y++)
+            for (x = 0; x <= 5; x++)
+                for (i = 6; i >= x + 1; i--)
+                    BrickMove(i - 1, y, i, y);
+        Spawn();
+        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+
+
+        BrickCheck();
+    }
+
+    void MoveLeft()
+    {
+        for (y = 0; y <= 6; y++)
+            for (x = 6; x >= 1; x--)
+                for (i = 0; i <= x - 1; i++)
+                    BrickMove(i + 1, y, i, y);
+        Spawn();
+        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+
+
+        BrickCheck();
     }
 
     void MoveDown()
@@ -284,6 +396,10 @@ public class BrickManager : MonoBehaviour
                 Instantiate(blueEffect, new Vector3(0.75f * num - 2.25f, -0.75f * line + 1.5f, 0), Quaternion.identity);
 
             Destroy(Square[num, line]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
         }
         else
         {
@@ -294,6 +410,10 @@ public class BrickManager : MonoBehaviour
                 Instantiate(blueEffect, new Vector3(0.75f * line - 2.25f, -0.75f * num + 1.5f, 0), Quaternion.identity);
 
             Destroy(Square[line, num]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
         }
         if (isSFX) SoundMgr.instance.BreakSoundPlay();
         curScore++;

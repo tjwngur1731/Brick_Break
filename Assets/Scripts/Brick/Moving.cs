@@ -9,6 +9,7 @@ public class Moving : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
         Time.timeScale = 1;
     }
 
@@ -24,14 +25,34 @@ public class Moving : MonoBehaviour
 
     }
 
+=======
+    }
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
 
-    public void Move(int x2, int y2)
+    void Update()
     {
+<<<<<<< HEAD
         move = true; _x2 = x2; _y2 = y2;
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.75f * x2 - 2.25f, -0.75f * y2 + 1.5f, 0), 20 * Time.deltaTime);
         if (transform.position == new Vector3(0.75f * x2 - 2.25f, -0.75f * y2 + 1.5f, 0))
+=======
+
+        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0.65f, 0.65f, 1), 0.3f);
+
+        if (move) Move(_x2, _y2);
+
+
+    }
+
+
+    public void Move(int x2, int y2)
+>>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
         {
-            move = false;
+            move = true; _x2 = x2; _y2 = y2;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.75f * x2 - 2.25f, -0.75f * y2 + 1.5f, 0), 0.1f);
+            if (transform.position == new Vector3(0.75f * x2 - 2.25f, -0.75f * y2 + 1.5f, 0))
+            {
+                move = false;
+            }
         }
     }
-}
