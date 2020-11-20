@@ -17,8 +17,13 @@ public class BrickManager : MonoBehaviour
     public GameObject orangeEffect;
     public GameObject blueEffect;
 
-    private Vector3 fp;   
-    private Vector3 lp;   
+    float arrowDelay;
+    float curDelay;
+    public GameObject arrow;
+    public GameObject firstPlayObj;
+
+    private Vector3 fp;
+    private Vector3 lp;
     private float dragDistance;
 
 
@@ -28,16 +33,27 @@ public class BrickManager : MonoBehaviour
     bool isSFX;
     bool isGameover;
     bool isBreaking;
+    bool firstPlay;
     int ra;
 
     int cnttt;
 
     GameObject[,] Square;
-    // Start is called before the first frame update
+
+    void Awake()
+    {
+        if (PlayerPrefs.GetInt("highScore") == 0) firstPlay = true;
+        else firstPlay = false;
+
+        firstPlay = true;
+
+        firstPlayObj.SetActive(firstPlay);
+
+        arrowDelay = 1f;
+    }
     void Start()
     {
         dragDistance = Screen.height * 10 / 100;
-        dragDistance = Screen.height * 15 / 100;
 
         Square = new GameObject[7, 7];
         highScore = PlayerPrefs.GetInt("highScore");
@@ -45,62 +61,28 @@ public class BrickManager : MonoBehaviour
 
         SoundMgr.instance.StartSoundPlay();
 
-        Spawn();
-        Spawn();
-        Spawn();
+        if(!firstPlay)
+        {
+            Spawn();
+            Spawn();
+            Spawn();
+        }
+        else
+        {
+            FirstSpawn();
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
-        {
-            Touch touch = Input.GetTouch(0); // get the touch
-            if (touch.phase == TouchPhase.Began) //check for the first touch
-            {
-                fp = touch.position;
-                lp = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
-            {
-                lp = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
-            {
-                lp = touch.position;  //last touch position. Ommitted if you use list
+        curDelay += Time.deltaTime;
 
-                //Check if drag distance is greater than 20% of the screen height
-                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
-                {//It's a drag
-                 //check if the drag is vertical or horizontal
-                    if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
-                    {   //If the horizontal movement is greater than the vertical movement...
-                        if ((lp.x > fp.x))  //If the movement was to the right)
-                        {   //Right swipe
-                            MoveRight();
-                        }
-                        else
-                        {   //Left swipe
-                            MoveLeft();
-                        }
-                    }
-                    else
-                    {   //the vertical movement is greater than the horizontal movement
-                        if (lp.y > fp.y)  //If the movement was up
-                        {   //Up swipe
-                            MoveUp();
-                        }
-                        else
-                        {   //Down swipe
-                            MoveDown();
-                        }
-                    }
-                }
-                else
-                {   //It's a tap as the drag distance is less than 20% of the screen height
-                    Debug.Log("Tap");
-                }
-            }
+        if (curDelay >= arrowDelay)
+        {
+            curDelay = 0;
+            arrow.SetActive(!arrow.activeSelf);
         }
 
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
@@ -115,7 +97,7 @@ public class BrickManager : MonoBehaviour
         else isSFX = false;
 
 #if UNITY_ANDROID
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        if (Input.touchCount == 1 && !isBreaking) // user is touching the screen with a single touch
         {
             Touch touch = Input.GetTouch(0); // get the touch
             if (touch.phase == TouchPhase.Began) //check for the first touch
@@ -139,22 +121,25 @@ public class BrickManager : MonoBehaviour
                     {   //If the horizontal movement is greater than the vertical movement...
                         if ((lp.x > fp.x))  //If the movement was to the right)
                         {   //Right swipe
-                            MoveRight();
+                            if (!firstPlay)
+                                MoveRight();
                         }
                         else
                         {   //Left swipe
-                            MoveLeft();
+                            if (!firstPlay)
+                                MoveLeft();
                         }
                     }
                     else
                     {   //the vertical movement is greater than the horizontal movement
                         if (lp.y > fp.y)  //If the movement was up
                         {   //Up swipe
-                            MoveUp();
+                            if (!firstPlay)
+                                MoveUp();
                         }
                         else
                         {   //Down swipe
-                            MoveDown();
+                                MoveDown();
                         }
                     }
                 }
@@ -165,59 +150,34 @@ public class BrickManager : MonoBehaviour
             }
         }
 
-        
-        
+
+
 #elif UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause && !isBreaking) 
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause && !isBreaking)
         {
-            for (x = 0; x <= 6; x++)
-                for (y = 0; y <= 5; y++)
-                    for (i = 6; i >= y + 1; i--)
-                        BrickMove(x, i - 1, x, i);
-            Spawn();
-            if (isSFX) SoundMgr.instance.MoveSoundPlay();
-            BrickCheck();
+            MoveDown();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !UIManager.instance.isPause && !isBreaking)
         {
-            for (x = 0; x <= 6; x++)
-                for (y = 6; y >= 1; y--)
-                    for (i = 0; i <= y - 1; i++)
-                        BrickMove(x, i + 1, x, i);
-            Spawn();
-            if (isSFX) SoundMgr.instance.MoveSoundPlay();
-
-            BrickCheck();
+            if (!firstPlay)
+                MoveUp();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && !UIManager.instance.isPause && !isBreaking)
         {
-            for (y = 0; y <= 6; y++)
-                for (x = 0; x <= 5; x++)
-                    for (i = 6; i >= x + 1; i--)
-                        BrickMove(i - 1, y, i, y);
-            Spawn();
-            if (isSFX) SoundMgr.instance.MoveSoundPlay();
-
-
-            BrickCheck();
+            if (!firstPlay)
+                MoveRight();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && !UIManager.instance.isPause && !isBreaking)
         {
-            for (y = 0; y <= 6; y++)
-                for (x = 6; x >= 1; x--)
-                    for (i = 0; i <= x - 1; i++)
-                        BrickMove(i + 1, y, i, y);
-            Spawn();
-            if (isSFX) SoundMgr.instance.MoveSoundPlay();
-
-
-            BrickCheck();
+            if (!firstPlay)
+                MoveLeft();
         }
 #endif
     }
 
     void MoveDown()
     {
+
         for (x = 0; x <= 6; x++)
             for (y = 0; y <= 5; y++)
                 for (i = 6; i >= y + 1; i--)
@@ -320,6 +280,9 @@ public class BrickManager : MonoBehaviour
         if (num >= 7)
         {
             isBreaking = false;
+            if (firstPlay) firstPlay = false;
+
+            firstPlayObj.SetActive(false);
             yield break;
         }
 
@@ -366,6 +329,16 @@ public class BrickManager : MonoBehaviour
 
     }
 
+
+    void FirstSpawn()
+    {
+        int ran;
+        for(int ii=0;ii<7;ii++)
+        {
+            ran = Random.Range(0, 7);
+            Square[ii, ran] = Instantiate(n[1], new Vector3(0.75f * ii - 2.25f, -0.75f * ran + 1.5f, 0), Quaternion.identity);
+        }
+    }
 
     void Spawn()
     {
