@@ -4,13 +4,7 @@ ScriptsOnlyBuild:
     - BrickManager
     - Intro
     - Moving
-<<<<<<< HEAD
     - SkinManager
-=======
-    - SaveSkin
-    - ShopManager
-    - SkinChoose
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
     - SoundMgr
     - UIManager
     - VerticalScrollBar
@@ -62,57 +56,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-<<<<<<< HEAD
-      Script: {instanceID: 11168}
-    - Class: 114
-      Script: {instanceID: 11458}
-    - Class: 114
-      Script: {instanceID: 11512}
-    - Class: 114
-      Script: {instanceID: 12174}
-    - Class: 114
-      Script: {instanceID: 12872}
-    - Class: 114
-      Script: {instanceID: 13012}
-    - Class: 114
-      Script: {instanceID: 13094}
-    - Class: 114
-      Script: {instanceID: 13410}
-    - Class: 114
-      Script: {instanceID: 13640}
-    - Class: 114
-      Script: {instanceID: 13764}
-    - Class: 114
-      Script: {instanceID: 14092}
-    - Class: 114
-      Script: {instanceID: 14256}
-    - Class: 114
-      Script: {instanceID: 15040}
-=======
       Script: {instanceID: 11166}
     - Class: 114
       Script: {instanceID: 11456}
     - Class: 114
       Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 11734}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 12874}
+      Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 13092}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 13408}
     - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14096}
+      Script: {instanceID: 14090}
     - Class: 114
-      Script: {instanceID: 14260}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
+      Script: {instanceID: 14254}
+    - Class: 114
+      Script: {instanceID: 14888}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -149,31 +117,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-<<<<<<< HEAD
-      Script: {instanceID: 11168}
-    - Class: 114
-      Script: {instanceID: 11256}
-    - Class: 114
-      Script: {instanceID: 11512}
-    - Class: 114
-      Script: {instanceID: 12174}
-    - Class: 114
-      Script: {instanceID: 13640}
-    - Class: 114
-      Script: {instanceID: 14256}
-=======
       Script: {instanceID: 11166}
     - Class: 114
       Script: {instanceID: 11254}
     - Class: 114
       Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 14260}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
+      Script: {instanceID: 14254}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -210,15 +164,6 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-<<<<<<< HEAD
-      Script: {instanceID: 11168}
-    - Class: 114
-      Script: {instanceID: 11458}
-    - Class: 114
-      Script: {instanceID: 11462}
-    - Class: 114
-      Script: {instanceID: 11512}
-=======
       Script: {instanceID: 11166}
     - Class: 114
       Script: {instanceID: 11456}
@@ -226,49 +171,30 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11460}
     - Class: 114
       Script: {instanceID: 11510}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
     - Class: 114
-      Script: {instanceID: 12002}
+      Script: {instanceID: 12000}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12522}
+      Script: {instanceID: 12520}
     - Class: 114
-<<<<<<< HEAD
-      Script: {instanceID: 12872}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 13410}
+      Script: {instanceID: 13408}
     - Class: 114
-      Script: {instanceID: 13640}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 13704}
+      Script: {instanceID: 13702}
     - Class: 114
-      Script: {instanceID: 13764}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14092}
+      Script: {instanceID: 14090}
     - Class: 114
-      Script: {instanceID: 14256}
+      Script: {instanceID: 14254}
     - Class: 114
-      Script: {instanceID: 20218}
+      Script: {instanceID: 19340}
     - Class: 114
-      Script: {instanceID: 20220}
-=======
-      Script: {instanceID: 12796}
-    - Class: 114
-      Script: {instanceID: 12874}
-    - Class: 114
-      Script: {instanceID: 13258}
-    - Class: 114
-      Script: {instanceID: 13414}
-    - Class: 114
-      Script: {instanceID: 13646}
-    - Class: 114
-      Script: {instanceID: 13710}
-    - Class: 114
-      Script: {instanceID: 14096}
-    - Class: 114
-      Script: {instanceID: 14260}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
+      Script: {instanceID: 19342}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -277,11 +203,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-<<<<<<< HEAD
-=======
-    - Class: 212
-      Script: {instanceID: 0}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -312,49 +233,27 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-<<<<<<< HEAD
-      Script: {instanceID: 11168}
-    - Class: 114
-      Script: {instanceID: 11458}
-    - Class: 114
-      Script: {instanceID: 11512}
-    - Class: 114
-      Script: {instanceID: 12174}
-    - Class: 114
-      Script: {instanceID: 12872}
-    - Class: 114
-      Script: {instanceID: 13410}
-    - Class: 114
-      Script: {instanceID: 13640}
-    - Class: 114
-      Script: {instanceID: 13764}
-    - Class: 114
-      Script: {instanceID: 14092}
-    - Class: 114
-      Script: {instanceID: 14256}
-    - Class: 114
-      Script: {instanceID: 15040}
-=======
       Script: {instanceID: 11166}
     - Class: 114
       Script: {instanceID: 11456}
     - Class: 114
       Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 11734}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 12874}
+      Script: {instanceID: 13408}
     - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14096}
+      Script: {instanceID: 14090}
     - Class: 114
-      Script: {instanceID: 14260}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
+      Script: {instanceID: 14254}
+    - Class: 114
+      Script: {instanceID: 14888}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -363,11 +262,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-<<<<<<< HEAD
-=======
-    - Class: 212
-      Script: {instanceID: 0}
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -517,15 +411,6 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-<<<<<<< HEAD
-=======
-      Hash: 2bcccfbfae0bceb4138cb411023f7266
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SaveSkin
-  - hash:
-      serializedVersion: 2
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -664,15 +549,6 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-<<<<<<< HEAD
-=======
-      Hash: 64411aef6454c9ed5069edaa176d70c4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SkinChoose
-  - hash:
-      serializedVersion: 2
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -709,7 +585,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 9741e6662ed1bca7eab7814d1541a634
+      Hash: 8006cc45bb9e11e088f21e83c6c9bdfe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrickManager
@@ -769,15 +645,6 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-<<<<<<< HEAD
-=======
-      Hash: 6bb2dfcc7d5f3ffbc284a67b8fa320fa
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ShopManager
-  - hash:
-      serializedVersion: 2
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -790,15 +657,6 @@ ScriptsOnlyBuild:
     className: SoundMgr
   - hash:
       serializedVersion: 2
-<<<<<<< HEAD
-=======
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MoneyText
-  - hash:
-      serializedVersion: 2
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
       Hash: 8001a5f7502aab37e42206da015e6914
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -829,15 +687,12 @@ ScriptsOnlyBuild:
     className: VerticalScrollBar
   - hash:
       serializedVersion: 2
-<<<<<<< HEAD
       Hash: 15bc8c6d89b9bb9cefd32f91e94e91e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SkinManager
   - hash:
       serializedVersion: 2
-=======
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -962,8 +817,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/TitleScene.unity
   - Assets/Scenes/Skins.unity
   - Assets/Scenes/IngameScene.unity
-<<<<<<< HEAD
-  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_Break_1.0.apk"
-=======
-  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_Break_0.1.apk"
->>>>>>> 9a674db51d16aee01635b4f3faf8ff5a9324c7b6
+  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick_Break_1.7.apk"
