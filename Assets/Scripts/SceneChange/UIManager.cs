@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        highScore.text = PlayerPrefs.GetInt("bestScore").ToString();
+        highScore.text = PlayerPrefs.GetInt("bestScore_1.8").ToString();
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
         else isSFX = false;
     }

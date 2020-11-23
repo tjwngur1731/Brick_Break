@@ -36,26 +36,28 @@ public class BrickManager : MonoBehaviour
     bool firstPlay;
     int ra;
 
+    int blueCnt;
+
     int cnttt;
 
     GameObject[,] Square;
 
     void Awake()
     {
-        if (PlayerPrefs.GetInt("bestScore") == 0) firstPlay = true;
+        if (PlayerPrefs.GetInt("bestScore_1.8") == 0) firstPlay = true;
         else firstPlay = false;
 
 
         firstPlayObj.SetActive(firstPlay);
 
-        arrowDelay = 1f;
+        arrowDelay = 2f;
     }
     void Start()
     {
         dragDistance = Screen.height * 10 / 100;
 
         Square = new GameObject[7, 7];
-        highScore = PlayerPrefs.GetInt("bestScore");
+        highScore = PlayerPrefs.GetInt("bestScore_1.8");
 
 
         SoundMgr.instance.StartSoundPlay();
@@ -89,7 +91,7 @@ public class BrickManager : MonoBehaviour
         score.text = curScore.ToString();
         bestScore.text = highScore.ToString();
         curScore2.text = curScore.ToString();
-        PlayerPrefs.SetInt("bestScore", highScore);
+        PlayerPrefs.SetInt("bestScore_1.8", highScore);
         if (curScore > highScore) highScore = curScore;
         score.text = curScore.ToString();
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
