@@ -34,17 +34,14 @@ public class SkinManager : MonoBehaviour
             blockImg = block.GetComponent<Image>();
 
         skinNum = PlayerPrefs.GetInt("SkinNum");
+
     }
 
     void Start()
     {
-        SkinChange(skinNum);
-        blockImg.sprite = blockSprite[skinNum];
-    }
+        image.sprite = sprite[skinNum];
 
-    void Update()
-    {
-        
+        blockImg.sprite = blockSprite[skinNum];
     }
 
     public void SkinChange(int skin)
@@ -52,5 +49,6 @@ public class SkinManager : MonoBehaviour
         image.sprite = sprite[skin];
         Debug.Log(skin);
         PlayerPrefs.SetInt("SkinNum", skin);
+        SoundMgr.instance.TouchSoundPlay();
     }
 }

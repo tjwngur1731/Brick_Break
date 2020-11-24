@@ -83,7 +83,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Skins");
         SoundMgr.instance.TouchSoundPlay();
-
     }
 
     public void Pause()
@@ -109,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        highScore.text = PlayerPrefs.GetInt("bestScore_1.8").ToString();
+        highScore.text = PlayerPrefs.GetInt("bestScore_").ToString();
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
         else isSFX = false;
     }

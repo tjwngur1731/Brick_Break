@@ -14,12 +14,22 @@ public class BrickManager : MonoBehaviour
 
 
     public GameObject gameover;
+    public GameObject orangeTuto;
+    public GameObject blueTuto;
+
+    float blueDelay;
+
     public GameObject orangeEffect;
     public GameObject blueEffect;
 
     float arrowDelay;
     float curDelay;
+
+
     public GameObject arrow;
+    SpriteRenderer sr;
+    public GameObject trail;
+    TrailRenderer tr;
     public GameObject firstPlayObj;
 
     private Vector3 fp;
@@ -34,6 +44,7 @@ public class BrickManager : MonoBehaviour
     bool isGameover;
     bool isBreaking;
     bool firstPlay;
+    bool firstBlue;
     int ra;
 
     int blueCnt;
@@ -44,25 +55,32 @@ public class BrickManager : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetInt("bestScore_1.8") == 0) firstPlay = true;
+        if (PlayerPrefs.GetInt("bestScore_") == 0) firstPlay = true;
         else firstPlay = false;
 
+        firstPlay = true;
+
+        firstBlue = firstPlay;
 
         firstPlayObj.SetActive(firstPlay);
+        orangeTuto.SetActive(firstPlay);
 
-        arrowDelay = 2f;
+        arrowDelay = 1f;
     }
     void Start()
     {
         dragDistance = Screen.height * 10 / 100;
 
+        tr = trail.GetComponent<TrailRenderer>();
+        sr = arrow.GetComponent<SpriteRenderer>();
+
         Square = new GameObject[7, 7];
-        highScore = PlayerPrefs.GetInt("bestScore_1.8");
+        highScore = PlayerPrefs.GetInt("bestScore_");
 
 
         SoundMgr.instance.StartSoundPlay();
 
-        if(!firstPlay)
+        if (!firstPlay)
         {
             Spawn();
             Spawn();
@@ -72,7 +90,7 @@ public class BrickManager : MonoBehaviour
         {
             FirstSpawn();
         }
-        
+
     }
 
     // Update is called once per frame
@@ -80,10 +98,22 @@ public class BrickManager : MonoBehaviour
     {
         curDelay += Time.deltaTime;
 
+        arrow.transform.position = Vector3.Lerp(arrow.transform.position, new Vector3(1f, -2f, 0), Time.deltaTime * 1);
+        sr.color = new Color(255,255,255, Mathf.MoveTowards(sr.color.a, .5f, Time.deltaTime * .3f));
+
+        if (blueTuto.activeSelf)
+        {
+            blueDelay += Time.deltaTime;
+            if (blueDelay >= 5)
+                blueTuto.SetActive(false);
+        }
+
         if (curDelay >= arrowDelay)
         {
+            arrow.transform.position = new Vector3(1f, -0f, 0);
             curDelay = 0;
-            arrow.SetActive(!arrow.activeSelf);
+            sr.color = Color.white;
+            tr.Clear();
         }
 
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
@@ -91,7 +121,7 @@ public class BrickManager : MonoBehaviour
         score.text = curScore.ToString();
         bestScore.text = highScore.ToString();
         curScore2.text = curScore.ToString();
-        PlayerPrefs.SetInt("bestScore_1.8", highScore);
+        PlayerPrefs.SetInt("bestScore_", highScore);
         if (curScore > highScore) highScore = curScore;
         score.text = curScore.ToString();
         if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
@@ -283,7 +313,6 @@ public class BrickManager : MonoBehaviour
             isBreaking = false;
             if (firstPlay) firstPlay = false;
 
-            firstPlayObj.SetActive(false);
             yield break;
         }
 
@@ -328,13 +357,20 @@ public class BrickManager : MonoBehaviour
             Square[x1, y1] = null;
         }
 
+        firstPlayObj.SetActive(false);
+        orangeTuto.SetActive(false);
+
+
+        if (firstBlue)
+            blueTuto.SetActive(false);
+
     }
 
 
     void FirstSpawn()
     {
         int ran;
-        for(int ii=0;ii<7;ii++)
+        for (int ii = 0; ii < 7; ii++)
         {
             ran = Random.Range(0, 7);
             Square[ii, ran] = Instantiate(n[1], new Vector3(0.75f * ii - 2.25f, -0.75f * ran + 1.5f, 0), Quaternion.identity);
@@ -377,7 +413,12 @@ public class BrickManager : MonoBehaviour
 
         if (Square[x, y] == null)
         {
-            Square[x, y] = Instantiate(n[ra], new Vector3(0.75f * x - 2.25f, -0.75f * y + 1.5f, 0), Quaternion.identity);
+            Square[x, y] = Instantiate(n[ra], new Vector3(0.74f * x - 2.22f, -0.74f * y + 1.48f, 0), Quaternion.identity);
+            if (ra == 0 && firstBlue)
+            {
+                blueTuto.SetActive(true);
+                firstBlue = false;
+            }
         }
     }
 

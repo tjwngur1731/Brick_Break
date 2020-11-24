@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - BrickManager
     - Intro
     - Moving
+    - Particle
     - SkinManager
     - SoundMgr
     - UIManager
@@ -53,6 +54,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -80,7 +83,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14254}
     - Class: 114
-      Script: {instanceID: 14888}
+      Script: {instanceID: 15062}
+    - Class: 114
+      Script: {instanceID: 36470}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,9 +197,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14254}
     - Class: 114
-      Script: {instanceID: 19340}
+      Script: {instanceID: 29506}
     - Class: 114
-      Script: {instanceID: 19342}
+      Script: {instanceID: 29508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -253,7 +258,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14254}
     - Class: 114
-      Script: {instanceID: 14888}
+      Script: {instanceID: 15062}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -585,7 +590,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 8006cc45bb9e11e088f21e83c6c9bdfe
+      Hash: 6511387ee784b1d78efe94c3acb805bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrickManager
@@ -811,10 +816,16 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Particle
   platform: 13
   scenePathNames:
   - Assets/Scenes/IntroScene.unity
   - Assets/Scenes/TitleScene.unity
   - Assets/Scenes/Skins.unity
   - Assets/Scenes/IngameScene.unity
-  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick_Break_1.7.apk"
+  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick_Break_1.8.apk"
