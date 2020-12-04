@@ -26,6 +26,7 @@ public class SoundMgr : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
+
     }
 
     void Start()

@@ -57,8 +57,9 @@ public class BrickManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("bestScore_") == 0) firstPlay = true;
         else firstPlay = false;
-
+#if UNITY_EDITOR
         firstPlay = true;
+#endif
 
         firstBlue = firstPlay;
 
@@ -205,6 +206,7 @@ public class BrickManager : MonoBehaviour
         }
 #endif
     }
+
 
     void MoveDown()
     {
@@ -401,6 +403,7 @@ public class BrickManager : MonoBehaviour
             }
             if (cnttt >= 48)
             {
+                TestingAdmob.instance.ShowInterstitial();
                 gameover.SetActive(true);
                 isGameover = true;
                 SoundMgr.instance.OverSoundPlay();
