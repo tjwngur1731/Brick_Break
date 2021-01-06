@@ -12,6 +12,8 @@ ScriptsOnlyBuild:
     - VerticalScrollBar
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -31,12 +33,16 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/IngameScene.unity:
     - Class: 1
@@ -62,35 +68,35 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11298}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11640}
+      Script: {instanceID: 11712}
     - Class: 114
-      Script: {instanceID: 11698}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12250}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12364}
+      Script: {instanceID: 12458}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 13396}
+      Script: {instanceID: 13510}
     - Class: 114
-      Script: {instanceID: 13480}
+      Script: {instanceID: 13596}
     - Class: 114
-      Script: {instanceID: 13832}
+      Script: {instanceID: 13950}
     - Class: 114
-      Script: {instanceID: 14084}
+      Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14220}
+      Script: {instanceID: 14344}
     - Class: 114
-      Script: {instanceID: 14574}
+      Script: {instanceID: 14706}
     - Class: 114
-      Script: {instanceID: 14754}
+      Script: {instanceID: 14890}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -120,29 +126,55 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 20
       Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11416}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11698}
+      Script: {instanceID: 11480}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 11712}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 11716}
     - Class: 114
-      Script: {instanceID: 13172}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 14084}
+      Script: {instanceID: 12342}
     - Class: 114
-      Script: {instanceID: 14754}
+      Script: {instanceID: 12540}
+    - Class: 114
+      Script: {instanceID: 12754}
+    - Class: 114
+      Script: {instanceID: 12946}
+    - Class: 114
+      Script: {instanceID: 13286}
+    - Class: 114
+      Script: {instanceID: 13516}
+    - Class: 114
+      Script: {instanceID: 13730}
+    - Class: 114
+      Script: {instanceID: 14208}
+    - Class: 114
+      Script: {instanceID: 14854}
+    - Class: 114
+      Script: {instanceID: 14890}
+    - Class: 114
+      Script: {instanceID: 14910}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -178,41 +210,41 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11298}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11640}
+      Script: {instanceID: 11712}
     - Class: 114
-      Script: {instanceID: 11644}
+      Script: {instanceID: 11716}
     - Class: 114
-      Script: {instanceID: 11698}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12248}
+      Script: {instanceID: 12342}
     - Class: 114
-      Script: {instanceID: 12250}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12946}
     - Class: 114
-      Script: {instanceID: 13832}
+      Script: {instanceID: 13950}
     - Class: 114
-      Script: {instanceID: 14084}
+      Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14152}
+      Script: {instanceID: 14276}
     - Class: 114
-      Script: {instanceID: 14220}
+      Script: {instanceID: 14344}
     - Class: 114
-      Script: {instanceID: 14574}
+      Script: {instanceID: 14706}
     - Class: 114
-      Script: {instanceID: 14754}
+      Script: {instanceID: 14890}
     - Class: 114
-      Script: {instanceID: 16372}
+      Script: {instanceID: 19062}
     - Class: 114
-      Script: {instanceID: 16400}
+      Script: {instanceID: 19064}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -251,31 +283,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11298}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11640}
+      Script: {instanceID: 11712}
     - Class: 114
-      Script: {instanceID: 11698}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12250}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 13832}
+      Script: {instanceID: 13950}
     - Class: 114
-      Script: {instanceID: 14084}
+      Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14220}
+      Script: {instanceID: 14344}
     - Class: 114
-      Script: {instanceID: 14574}
+      Script: {instanceID: 14706}
     - Class: 114
-      Script: {instanceID: 14754}
+      Script: {instanceID: 14890}
     - Class: 114
-      Script: {instanceID: 15968}
+      Script: {instanceID: 16600}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -307,6 +339,18 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Stores.dll
+    namespaceName: UnityEngine.Purchasing
+    className: AsyncWebUtil
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Stores.dll
+    namespaceName: UnityEngine.Purchasing.Extension
+    className: UnityUtil
+  - hash:
+      serializedVersion: 2
       Hash: c42672c997f8be6b1aa86a927ebea785
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -331,10 +375,22 @@ ScriptsOnlyBuild:
     className: Intro
   - hash:
       serializedVersion: 2
+      Hash: ebd0fcfecda45cfd91320c470f790625
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: 
+    className: IAPDemoProductUI
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 8938bfdfe26c79d6858429a718a6d82a
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPButton
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -403,6 +459,30 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: ObfuscatorWindow
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: ProductCatalogEditor
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: RichEditorWindow
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: UdpInstallInstructionsWindow
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -463,6 +543,12 @@ ScriptsOnlyBuild:
     className: CinemachinePixelPerfect
   - hash:
       serializedVersion: 2
+      Hash: 3bddfbf6938ea3f1a5e7b2933643730f
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPListener
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -485,6 +571,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: DemoInventory
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -775,7 +867,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: e08925ad86d758c3e6a4b958ec4fbe8c
+      Hash: 0558ea86097b9ff188d9efabc349ff53
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -875,10 +967,17 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 08a4dc90eb8d405328ffd2b674587aba
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: 
+    className: IAPDemo
   platform: 13
   scenePathNames:
   - Assets/Scenes/IntroScene.unity
   - Assets/Scenes/TitleScene.unity
   - Assets/Scenes/Skins.unity
   - Assets/Scenes/IngameScene.unity
-  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick_Break_ad_test.apk"
+  playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick
+    Break.apk"

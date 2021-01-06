@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject[] SFXUI;
 
-    public GameObject[] SoundUI;
+    public GameObject noAds;
 
     public GameObject InfoUI;
 
@@ -70,11 +70,9 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("isSFX", isSFX ? 1:0);
     }
 
-    public void Sound()
+    public void NoAds()
     {
-        isSound = !isSound;
-        SoundUI[1].SetActive(isSound);
-        SoundUI[0].SetActive(!isSound);
+        noAds.SetActive(!noAds.activeSelf);
     }
 
 
@@ -104,6 +102,11 @@ public class UIManager : MonoBehaviour
         InfoUI.SetActive(isInfo);
         SoundMgr.instance.TouchSoundPlay();
 
+    }
+   
+    public void ButtonEffect()
+    {
+        gameObject.tranform.scale
     }
 
     void Update()

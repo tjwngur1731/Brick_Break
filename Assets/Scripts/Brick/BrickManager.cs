@@ -70,7 +70,7 @@ public class BrickManager : MonoBehaviour
     }
     void Start()
     {
-        dragDistance = Screen.height * 10 / 100;
+        dragDistance = Screen.height * 7 / 100;
 
         tr = trail.GetComponent<TrailRenderer>();
         sr = arrow.GetComponent<SpriteRenderer>();
