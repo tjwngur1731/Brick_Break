@@ -11,6 +11,7 @@ public class BrickManager : MonoBehaviour
     public Text bestScore;
     public Text score;
     public Text curScore2;
+    public Text moneyTxt;
 
 
     public GameObject gameover;
@@ -38,13 +39,19 @@ public class BrickManager : MonoBehaviour
 
 
     int x, y, i;
+
     int curScore, highScore;
+
+    public int money;
+
     bool chk;
     bool isSFX;
+    bool isVibrate;
     bool isGameover;
     bool isBreaking;
     bool firstPlay;
     bool firstBlue;
+
     int ra;
 
     int blueCnt;
@@ -70,6 +77,8 @@ public class BrickManager : MonoBehaviour
     }
     void Start()
     {
+        money = PlayerPrefs.GetInt("money");
+
         dragDistance = Screen.height * 7 / 100;
 
         tr = trail.GetComponent<TrailRenderer>();
@@ -91,7 +100,7 @@ public class BrickManager : MonoBehaviour
         {
             FirstSpawn();
         }
-
+        moneyTxt.text = money.ToString();
     }
 
     // Update is called once per frame
@@ -117,16 +126,13 @@ public class BrickManager : MonoBehaviour
             tr.Clear();
         }
 
-        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
-        else isSFX = false;
+
         score.text = curScore.ToString();
         bestScore.text = highScore.ToString();
         curScore2.text = curScore.ToString();
         PlayerPrefs.SetInt("bestScore_", highScore);
         if (curScore > highScore) highScore = curScore;
         score.text = curScore.ToString();
-        if (PlayerPrefs.GetInt("isSFX") > 0) isSFX = true;
-        else isSFX = false;
 
 #if UNITY_ANDROID
         if (Input.touchCount == 1 && !isBreaking) // user is touching the screen with a single touch
@@ -182,9 +188,6 @@ public class BrickManager : MonoBehaviour
             }
         }
 
-
-
-#elif UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.DownArrow) && !UIManager.instance.isPause && !isBreaking)
         {
             MoveDown();
@@ -216,7 +219,7 @@ public class BrickManager : MonoBehaviour
                 for (i = 6; i >= y + 1; i--)
                     BrickMove(x, i - 1, x, i);
         Spawn();
-        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+        if (UIManager.instance.isSFXOn) SoundMgr.instance.MoveSoundPlay();
         BrickCheck();
     }
     void MoveUp()
@@ -226,7 +229,7 @@ public class BrickManager : MonoBehaviour
                 for (i = 0; i <= y - 1; i++)
                     BrickMove(x, i + 1, x, i);
         Spawn();
-        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+        if (UIManager.instance.isSFXOn) SoundMgr.instance.MoveSoundPlay();
 
         BrickCheck();
     }
@@ -238,7 +241,7 @@ public class BrickManager : MonoBehaviour
                 for (i = 6; i >= x + 1; i--)
                     BrickMove(i - 1, y, i, y);
         Spawn();
-        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+        if (UIManager.instance.isSFXOn) SoundMgr.instance.MoveSoundPlay();
 
 
         BrickCheck();
@@ -251,7 +254,7 @@ public class BrickManager : MonoBehaviour
                 for (i = 0; i <= x - 1; i++)
                     BrickMove(i + 1, y, i, y);
         Spawn();
-        if (isSFX) SoundMgr.instance.MoveSoundPlay();
+        if (UIManager.instance.isSFXOn) SoundMgr.instance.MoveSoundPlay();
 
 
         BrickCheck();
@@ -279,7 +282,13 @@ public class BrickManager : MonoBehaviour
                     break;
                 }
             }
-            if (chk) StartCoroutine(BrickBreak(xx, 0, false));
+            if (chk)
+            {
+                money++;
+
+                PlayerPrefs.SetInt("money", money);
+                StartCoroutine(BrickBreak(xx, 0, false));
+            }
         }
 
         for (int yy = 0; yy < 7; yy++)
@@ -303,13 +312,24 @@ public class BrickManager : MonoBehaviour
                     break;
                 }
             }
-            if (chk) StartCoroutine(BrickBreak(yy, 0, true));
+            if (chk)
+            {
+                money++;
+
+                PlayerPrefs.SetInt("money", money);
+                StartCoroutine(BrickBreak(yy, 0, true));
+            }
         }
 
     }
 
     IEnumerator BrickBreak(int line, int num, bool isHorizontal)
     {
+        if (UIManager.instance.isVibrate)
+        {
+            Debug.Log("진동");
+            Handheld.Vibrate();
+        }
         if (num >= 7)
         {
             isBreaking = false;
@@ -345,7 +365,7 @@ public class BrickManager : MonoBehaviour
             Destroy(Square[line, num]);
 
         }
-        if (isSFX) SoundMgr.instance.BreakSoundPlay();
+        if (UIManager.instance.isSFXOn) SoundMgr.instance.BreakSoundPlay();
         curScore++;
 
     }

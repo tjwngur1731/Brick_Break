@@ -5,15 +5,13 @@ ScriptsOnlyBuild:
     - Intro
     - Moving
     - Particle
+    - SkinChanger
     - SkinManager
     - SoundMgr
     - TestingAdmob
     - UIManager
-    - VerticalScrollBar
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -24,6 +22,12 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -63,6 +67,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 96
       Script: {instanceID: 0}
     - Class: 104
@@ -82,8 +90,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12754}
-    - Class: 114
       Script: {instanceID: 13510}
     - Class: 114
       Script: {instanceID: 13596}
@@ -92,11 +98,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14344}
+      Script: {instanceID: 14434}
     - Class: 114
-      Script: {instanceID: 14706}
+      Script: {instanceID: 14708}
     - Class: 114
-      Script: {instanceID: 14890}
+      Script: {instanceID: 14892}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -167,11 +173,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14854}
+      Script: {instanceID: 14856}
     - Class: 114
-      Script: {instanceID: 14890}
+      Script: {instanceID: 14892}
     - Class: 114
-      Script: {instanceID: 14910}
+      Script: {instanceID: 14912}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -188,24 +194,16 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/Scenes/Skins.unity:
+    Assets/Scenes/SkinScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
       Script: {instanceID: 0}
     - Class: 20
       Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
     - Class: 81
-      Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
-    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -214,40 +212,20 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11712}
-    - Class: 114
-      Script: {instanceID: 11716}
-    - Class: 114
       Script: {instanceID: 11770}
-    - Class: 114
-      Script: {instanceID: 12342}
-    - Class: 114
-      Script: {instanceID: 12344}
     - Class: 114
       Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12754}
-    - Class: 114
-      Script: {instanceID: 12946}
-    - Class: 114
-      Script: {instanceID: 13950}
-    - Class: 114
       Script: {instanceID: 14208}
-    - Class: 114
-      Script: {instanceID: 14276}
     - Class: 114
       Script: {instanceID: 14344}
     - Class: 114
-      Script: {instanceID: 14706}
+      Script: {instanceID: 14434}
     - Class: 114
-      Script: {instanceID: 14890}
+      Script: {instanceID: 14708}
     - Class: 114
-      Script: {instanceID: 19062}
-    - Class: 114
-      Script: {instanceID: 19064}
+      Script: {instanceID: 14892}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -301,13 +279,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14208}
     - Class: 114
-      Script: {instanceID: 14344}
+      Script: {instanceID: 14434}
     - Class: 114
-      Script: {instanceID: 14706}
+      Script: {instanceID: 14708}
     - Class: 114
-      Script: {instanceID: 14890}
+      Script: {instanceID: 14892}
     - Class: 114
-      Script: {instanceID: 16600}
+      Script: {instanceID: 16366}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -729,7 +707,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 6511387ee784b1d78efe94c3acb805bc
+      Hash: 375df851868fb93e6b4ecec9d1095afe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrickManager
@@ -843,6 +821,12 @@ ScriptsOnlyBuild:
     className: SkinManager
   - hash:
       serializedVersion: 2
+      Hash: a220d8c2ecc245a307784bb6d3a49db4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SkinChanger
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -867,7 +851,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 0558ea86097b9ff188d9efabc349ff53
+      Hash: 1f1f8f0b5d740cc443cb12f40c1b9225
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -977,7 +961,7 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/IntroScene.unity
   - Assets/Scenes/TitleScene.unity
-  - Assets/Scenes/Skins.unity
   - Assets/Scenes/IngameScene.unity
+  - Assets/Scenes/SkinScene.unity
   playerPath: "C:/Users/tjwng/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Brick_APK/Brick
     Break.apk"

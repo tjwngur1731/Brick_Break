@@ -127,11 +127,11 @@ public class SkinManager : MonoBehaviour
 
     public void SkinChange(int skin)
     {
-        image.sprite = sprite[skin];
-        blockImg.sprite = blockSprite[skin];
+        //image.sprite = sprite[skin];
+        //blockImg.sprite = blockSprite[skin];
 
         Debug.Log(skin);
         PlayerPrefs.SetInt("SkinNum", skin);
-        //SoundMgr.instance.TouchSoundPlay();
+        SoundMgr.instance.TouchSoundPlay();
     }
 }

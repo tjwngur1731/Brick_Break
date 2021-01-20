@@ -18,6 +18,8 @@ public class TestingAdmob : MonoBehaviour
         if (instance == null) instance = this;
 
         else Destroy(this);
+
+        this.RequestBanner();
     }
     void Start()
     {
@@ -32,7 +34,6 @@ public class TestingAdmob : MonoBehaviour
         MobileAds.Initialize(appid);
 
         this.RequestInterstitial();
-        this.RequestBanner();
     }
 
 
@@ -40,7 +41,7 @@ public class TestingAdmob : MonoBehaviour
     private void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-5708876822263347/3432018942"; 
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
 #elif UNITY_IPHONE
         //string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -111,7 +112,7 @@ public class TestingAdmob : MonoBehaviour
     private void RequestBanner()
     {
 #if UNITY_ANDROID
-        string AdUnitID = "ca-app-pub-5708876822263347/7993068727"; //테스트 아이디
+        string AdUnitID = "ca-app-pub-3940256099942544/6300978111"; //테스트 아이디
 #else
         string AdUnitID = "unDefind";
 #endif

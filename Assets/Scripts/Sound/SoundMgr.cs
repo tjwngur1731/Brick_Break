@@ -41,31 +41,31 @@ public class SoundMgr : MonoBehaviour
 
     public void MoveSoundPlay()
     {
-        if (UIManager.instance.isSFX)
+        if (UIManager.instance.isSFXOn)
             moveSound.Play();
     }
 
     public void BreakSoundPlay()
     {
-        if (UIManager.instance.isSFX)
+        if (UIManager.instance.isSFXOn)
             breakSound.Play();
     }
 
     public void OverSoundPlay()
     {
-        if (UIManager.instance.isSFX)
+        if (UIManager.instance.isSFXOn)
             overSound.Play();
     }
 
     public void StartSoundPlay()
     {
-        if (UIManager.instance.isSFX)
+        if (UIManager.instance.isSFXOn)
             startSound.Play();
     }
 
     public void TouchSoundPlay()
     {
-        if (UIManager.instance.isSFX)
+        if (UIManager.instance.isSFXOn)
             touchSound.Play();
     }
 
